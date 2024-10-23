@@ -20,25 +20,41 @@ public class IterativeMethods {
 		return sum;
 	}
 
+
 	/**
 	 * @param array the array to create a reverse of, not to be mutated
-	 * @return an array with the same data as the input but it reverse order
+	 * @return an array with the same data as the input but in reverse order
 	 */
 	public static int[] toReversed(int[] array) {
-		int[] reversed = new int[array.length];
-		if (array.length > 0) {
-			int lastIndex = array.length - 1;
-			for (int index = 0; index <= array.length / 2; ++index) {
-				int mirrorIndex = lastIndex - index;
-				// note:
-				// since we read from array and write to reversed
-				// we do not need to use a temp variable
-				reversed[index] = array[mirrorIndex];
-				reversed[mirrorIndex] = array[index];
-			}
-		}
-		return reversed;
+	    int[] reversed = new int[array.length];
+	    reverseHelper(array, reversed, 0);
+	    return reversed;
 	}
+
+	/**
+	 * Helper method to fill the reversed array recursively.
+	 *
+	 * @param array   the original array
+	 * @param reversed the array to store the reversed elements
+	 * @param index   the current index to fill in the reversed array
+	 */
+	private static void reverseHelper(int[] array, int[] reversed, int index) {
+	 
+	    if (index >= array.length) {
+	        return;
+	    }
+	    
+	    reversed[index] = array[array.length - 1 - index];
+	    
+	    reverseHelper(array, reversed, index + 1); }
+	    
+
+	 
+
+
+	 
+	
+	
 	
 	/**
 	 * @param p first operand
